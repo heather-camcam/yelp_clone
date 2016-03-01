@@ -6,7 +6,11 @@ group :test do
   gem 'rspec-collection_matchers'
 end
 
+gem 'devise'
+# Adds user login
+
 gem 'shoulda'
+
 gem 'haml'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
