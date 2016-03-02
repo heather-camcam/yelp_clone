@@ -9,6 +9,9 @@ end
 gem 'devise'
 # Adds user login
 
+gem 'omniauth-facebook'
+# Facebook login
+
 gem 'shoulda'
 
 gem 'haml'
