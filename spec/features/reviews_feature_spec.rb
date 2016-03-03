@@ -16,4 +16,12 @@ feature 'reviewing' do
     leave_review2
     expect(page).not_to have_content 'amazeballs'
   end
+
+  scenario 'user can delete a review' do
+    visit '/restaurants'
+    user_signup
+    leave_review
+    click_link 'Delete Review'
+    expect(page).not_to have_content 'so so'
+  end
 end
