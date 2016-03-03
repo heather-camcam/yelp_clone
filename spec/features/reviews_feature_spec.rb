@@ -35,4 +35,10 @@ feature 'reviewing' do
     expect(page).to have_content('You can only delete reviews you created')
   end
 
+  scenario 'displays an average rating for all reviews' do
+    add_review('So so', '3')
+    add_review('Great', '5')
+    expect(page).to have_content('Average rating: 4')
+  end
+
 end
