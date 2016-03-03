@@ -72,19 +72,19 @@ feature 'restaurants' do
   end
 
   context 'editing restaurant' do
-    before { Restaurant.create name: 'KFC'}
 
     scenario 'let a user edit a restaurant' do
       visit '/restaurants'
       user_signup
-      click_link 'Edit KFC'
+      create_restaurant
+      click_link 'Edit pizza express'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       click_button 'Update Restaurant'
       expect(page).to have_content 'Kentucky Fried Chicken'
       expect(current_path).to eq '/restaurants'
     end
 
-    xscenario 'users can only edit restaurants they have created' do
+    scenario 'users can only edit restaurants they have created' do
       visit('/')
       user_signup
       create_restaurant
@@ -92,7 +92,6 @@ feature 'restaurants' do
       user2_signup
       click_link('Edit pizza express')
       expect(current_path).to eq('/restaurants')
-      expect(page).to have_content('You can only edit restaurants you have created')
     end
   end
 

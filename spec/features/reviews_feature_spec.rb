@@ -9,13 +9,11 @@ feature 'reviewing' do
     leave_review
   end
 
-  scenario 'only lets user edit reviews that they have created' do
+  scenario 'only lets users create one review per restaurant' do
     visit '/restaurants'
     user_signup
     leave_review
-    click_link 'Sign out'
-    user2_signup
-    click_link 'Review KFC'
-    expect(page).to have_content 'You can only edit reviews you created'
+    leave_review2
+    expect(page).not_to have_content 'amazeballs'
   end
 end

@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    byebug
     @review = @restaurant.build_review(review_params, current_user)
     if @review.save
       redirect_to restaurants_path
@@ -26,5 +25,5 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:thoughts, :rating)
   end
 
-  
+
 end

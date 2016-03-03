@@ -26,6 +26,11 @@ def leave_review
   fill_in "Thoughts", with: "so so"
   select '3', from: 'Rating'
   click_button 'Leave Review'
-  expect(current_path).to eq '/restaurants'
-  expect(page).to have_content 'so so'
+end
+
+def leave_review2
+  click_link 'Review KFC'
+  fill_in "Thoughts", with: "amazeballs"
+  select '3', from: 'Rating'
+  click_button 'Leave Review'
 end
