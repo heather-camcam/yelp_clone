@@ -84,7 +84,7 @@ feature 'restaurants' do
       expect(current_path).to eq '/restaurants'
     end
 
-    scenario 'users can only edit restaurants they have created' do
+    xscenario 'users can only edit restaurants they have created' do
       visit('/')
       user_signup
       create_restaurant
@@ -93,7 +93,7 @@ feature 'restaurants' do
       click_link('Edit pizza express')
       expect(current_path).to eq('/restaurants')
       expect(page).to have_content('You can only edit restaurants you have created')
-    end 
+    end
   end
 
   context 'deleting restaurants' do

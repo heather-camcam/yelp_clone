@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def has_reviewed?(restaurant)
+    reviewed_restaurants.include? restaurant
+  end
 end
