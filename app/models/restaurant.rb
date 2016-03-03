@@ -8,4 +8,9 @@ class Restaurant < ActiveRecord::Base
     attributes[:user] ||= user
     reviews.build(attributes)
   end
+
+  def owned_by?(user)
+    user == self.user
+  end
+
 end

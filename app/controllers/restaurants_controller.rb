@@ -29,17 +29,16 @@ class RestaurantsController < ApplicationController
 
   def edit
     @restaurant = Restaurant.find(params[:id])
-    if @restaurant.user_id == current_user.id
-      redirect_to ("/restaurants/#{@restaurant.id}/edit")
-    else
-      redirect_to restaurants_path
-    end
   end
 
   def update
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.update(restaurant_params)
-    redirect_to '/restaurants'
+    if @restaurant.owned_by?(current_user)
+      @restaurant.update(restaurant_params)
+    else
+      flash[:notice] = "You can only edit restaurants you created"
+    end
+    redirect_to restaurants_path
   end
 
   def destroy

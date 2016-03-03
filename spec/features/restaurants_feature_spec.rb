@@ -91,7 +91,8 @@ feature 'restaurants' do
       click_link('Sign out')
       user2_signup
       click_link('Edit pizza express')
-      expect(current_path).to eq('/restaurants')
+      click_button 'Update Restaurant'
+      expect(page).to have_content('You can only edit restaurants you created')
     end
   end
 
