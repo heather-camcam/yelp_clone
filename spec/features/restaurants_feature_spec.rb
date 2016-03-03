@@ -29,6 +29,7 @@ feature 'restaurants' do
       it 'does not let a user that is not logged in add a restaurant' do
         visit '/restaurants'
         click_link 'Add a restaurant'
+        expect(current_path).to eq '/users/sign_in'
         expect(page).to have_content 'Log in'
       end
     end
@@ -52,8 +53,6 @@ feature 'restaurants' do
         click_button 'Create Restaurant'
         expect(page).not_to have_css 'h2', text: 'kf'
         expect(page).to have_content 'error'
-
-
       end
     end
 
@@ -84,6 +83,17 @@ feature 'restaurants' do
       expect(page).to have_content 'Kentucky Fried Chicken'
       expect(current_path).to eq '/restaurants'
     end
+
+    scenario 'users can only edit restaurants they have created' do
+      visit('/')
+      user_signup
+      create_restaurant
+      click_link('Sign out')
+      user2_signup
+      click_link('Edit pizza express')
+      expect(current_path).to eq('/restaurants')
+      expect(page).to have_content('You can only edit restaurants you have created')
+    end 
   end
 
   context 'deleting restaurants' do
