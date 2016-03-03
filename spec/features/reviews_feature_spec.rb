@@ -24,4 +24,15 @@ feature 'reviewing' do
     click_link 'Delete Review'
     expect(page).not_to have_content 'so so'
   end
+
+  scenario 'user can only delete their own review' do
+    visit '/restaurants'
+    user_signup
+    leave_review
+    click_link 'Sign out'
+    user2_signup
+    click_link 'Delete Review'
+    expect(page).to have_content('You can only delete reviews you created')
+  end
+
 end
