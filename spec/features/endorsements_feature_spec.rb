@@ -12,4 +12,5 @@ feature 'endorsing reviews' do
     expect(page).to have_content('1 endorsement')
   end
 
+
 end
