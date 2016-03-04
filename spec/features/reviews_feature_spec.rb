@@ -36,7 +36,11 @@ feature 'reviewing' do
   end
 
   scenario 'displays an average rating for all reviews' do
+    visit '/restaurants'
+    user_signup
     add_review('So so', '3')
+    click_link 'Sign out'
+    user2_signup
     add_review('Great', '5')
     expect(page).to have_content('Average rating: 4')
   end
