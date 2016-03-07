@@ -1,6 +1,22 @@
 source 'https://rubygems.org'
 
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'rspec-collection_matchers'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end
 
+gem 'paperclip'
+
+gem 'devise'
+# Adds user login
+
+gem 'omniauth-facebook'
+# Facebook login
+
+gem 'shoulda'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
@@ -43,9 +59,4 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-
-group :test do
-  gem 'rspec-rails'
-  gem 'capybara'
 end
